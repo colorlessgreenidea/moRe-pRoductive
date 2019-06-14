@@ -16,8 +16,8 @@ future_map(1:nrow(discs), function(x) {
   command <- str_glue('ffmpeg -i "{og_filepath}" -ss {start_time} -t {length} "{outfile}.mp3"',
                       disc = discs$disc,
                       start_time = discs$start_time[x],
-                      og_filepath = og_filepath,
+                      og_filepath = filepath,
                       length = discs$length[x],
-                      outfile = paste0('discs_split/disc_', discs$disc[x], '/', discs$title[x]))
+                      outfile = paste0('discs_split/disc', discs$disc[x], '/', discs$title[x]))
   system(command, intern = TRUE)
 }, .progress = TRUE)
